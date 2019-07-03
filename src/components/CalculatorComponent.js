@@ -22,7 +22,7 @@ class Calculator extends Component {
 
       updateTemperatureInCelcius = (event)=>{
         this.setState({
-            temperatureInCelcius: this.CelciusToFahrenheitConverter(event.target.value).toFixed(2),
+            temperatureInCelcius: this.FahrenheitToCelciusConverter(event.target.value).toFixed(2),
             temperatureInputFahrenheit: event.target.value
         })
       }

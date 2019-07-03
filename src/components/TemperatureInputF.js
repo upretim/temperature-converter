@@ -7,5 +7,4 @@ const TemperatureInputFahrenheit = (props) =>{
         </div>
     )
 }
-
 export default TemperatureInputFahrenheit;
