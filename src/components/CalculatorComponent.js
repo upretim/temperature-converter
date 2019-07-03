@@ -1,38 +1,50 @@
 import React, {Component} from "react";
 import TemperatureInput  from './TemperatureInput';
-import TemperatureInputF from './TemperatureInput'
+import Verdict from './Verdict';
+import TemperatureInputFahrenheit from './TemperatureInputF'
 
 class Calculator extends Component {
     constructor(prop){
         super(prop)
         this.state ={
-            tempInCel: 0,
-            tempInFar: 32
+            temperatureInCelcius: '',
+            temperatureInputFahrenheit: ''
         }
     }
 
-    //(0°C × 9/5)  = (F -32)*5/9
-
-
-    FToCConverter = (value)=>{
-    const f = (value * 9/5) + 32;
-    this.setState({
-        tempInFar: f
-    })
-    }
-
-    CToFConverter = (value)=>{
-        const c = (value -32)*5/9;
+    updateTemperature = (event)=>{
+        console.log('Temprature updated', event.target.value);
         this.setState({
-            tempInCel: c
+            temperatureInCelcius: event.target.value,
+            temperatureInputFahrenheit: this.CelciusToFahrenheitConverter(event.target.value).toFixed(2) 
         })
+      }
+
+      updateTemperatureInCelcius = (event)=>{
+        this.setState({
+            temperatureInCelcius: this.CelciusToFahrenheitConverter(event.target.value).toFixed(2),
+            temperatureInputFahrenheit: event.target.value
+        })
+      }
+
+      CelciusToFahrenheitConverter = (value)=>{
+        return (value * (9/5)) + 32
+      }
+
+      FahrenheitToCelciusConverter = (value)=>{
+       return (value-32)/1.8
     }
 
     render(){
-        return(<h1>Hello I am Calculator
-            <TemperatureInput  temp = {this.state.tempInCel} unit="°C"  updateF={(event)=>this.CToFConverter(event.target.value)} />
-            <TemperatureInputF  temp = {this.state.tempInFar}  unit="°F" updateC={(event)=>this.FToCConverter(event.target.value)}/>
-        </h1>)
+        return(
+            <>
+             <h1>Hello I am Calculator </h1> 
+             <TemperatureInput temp={this.state.temperatureInCelcius} updateTemperature={(event)=>this.updateTemperature(event)}/>
+             <TemperatureInputFahrenheit  temp={this.state.temperatureInputFahrenheit}  UpdateTemperature={(event)=>this.updateTemperatureInCelcius(event)} />
+             <Verdict temperature= {this.state.temperatureInCelcius}/>
+            </>
+           
+           )
     }
 }
 

@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Calculator from './components/CalculatorComponent'
+import Calculator from './components/CalculatorComponent';
+import TemperatureInput  from './components/TemperatureInput';
+import Verdict from './components/Verdict';
 
 function App() {
   return (
     <div className="App">
-      <Calculator/>
+       <Calculator/>
     </div>
   );
 }

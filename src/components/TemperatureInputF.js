@@ -1,11 +1,11 @@
 import React from 'react';
-const TemperatureInputF = (props) =>{
+const TemperatureInputFahrenheit = (props) =>{
     return(
         <div >
-            <label>Please enter Temperature in {props.unit}:</label>
-            <input type="Text" value= {props.temp} onChange={props.updateC}/>
+            <label>Please enter Temperature in Fahrenheit: </label>
+            <input type="Text" value= {props.temp} onChange={props.UpdateTemperature}/>
         </div>
     )
 }
 
-export default TemperatureInputF;
+export default TemperatureInputFahrenheit;
